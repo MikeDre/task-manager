@@ -19,20 +19,65 @@ export default () => {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }
 
-        $taskForm.addEventListener('submit', (e) => {
+        function handleAddTask(e) {
             e.preventDefault();
-            const submittedTask = $taskNewTitle.value;
+            const submittedTask = $taskNewTitle.value.trim();
 
             if (submittedTask && submittedTask.length > 1) {
-                console.log('submitted task: ', submittedTask)
+                tasks.unshift({
+                    title: submittedTask,
+                    completed: false,
+                });
+
+                storeTaskList();
+                alert('New task added successfully');
+                loadTasks();
             } else {
                 alert('Please enter a valid task (Min 2 characters)')
             }
-        });
+            console.log('tasks: ', tasks);
+        }
 
-        // Toggle new task input
+        function handleRemoveTask(taskIndex: number) {
+            tasks.splice(taskIndex, 1);
+
+            storeTaskList();
+            loadTasks();
+        }
+    
+        function loadTasks() {
+            $taskList.innerHTML = '';
+
+            tasks.forEach((task, index) => {
+                const $taskItem = document.createElement('li');
+
+                $taskItem.className = `tm__task-item ${task.completed ? 'tm__task-item--completed' : ''}`;
+        
+                $taskItem.innerHTML = `
+                    <span>${task.title}</span>
+                    <span class="tm__task-item-options">
+                        <button class="tm__btn tm__task-item-done">Done</button>
+                        <button class="tm__btn tm__task-item-delete">Delete</button>
+                    <span>
+                `;
+        
+                $taskItem.querySelector('.tm__task-item-delete')?.addEventListener('click', () => handleRemoveTask(index));
+
+                $taskList.appendChild($taskItem);
+            });
+
+        }
+        
+        $taskForm.addEventListener('submit', handleAddTask);
+
         $newTaskToggle.addEventListener('click', () => {
             $taskForm.classList.toggle('hidden');
         });
+
+        $newTaskToggle.addEventListener('click', () => {
+            $taskForm.classList.toggle('hidden');
+        });
+    
+        loadTasks();
     });
 };
