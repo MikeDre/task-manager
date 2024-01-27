@@ -19,7 +19,7 @@ export default () => {
             localStorage.setItem('tasks', JSON.stringify(tasks));
         }
 
-        function handleAddTask(e) {
+        function handleAddTask(e: Event) {
             e.preventDefault();
             const submittedTask = $taskNewTitle.value.trim();
 

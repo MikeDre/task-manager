@@ -72,10 +72,6 @@
     background-color: #aaa;
 }
 
-.tm__new-task-title {
-
-}
-
 @media (max-width: 767px) {
     .tm__task-item {
         flex-direction: column;
