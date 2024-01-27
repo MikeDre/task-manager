@@ -12,7 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <form id="tm__form" class="hidden">
       <input type="text" id="tm__new-task-title" placeholder="Add task name..." required >
-      <button type="submit" class="tm__btn">Add Task</button>
+      <button type="submit" class="tm__btn" aria-label="Add new task">Add Task</button>
     </form>
 
     <section id="tm__task-manager">

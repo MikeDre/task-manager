@@ -35,7 +35,6 @@ export default () => {
             } else {
                 alert('Please enter a valid task (Min 2 characters)')
             }
-            console.log('tasks: ', tasks);
         }
 
         function handleRemoveTask(taskIndex: number) {
@@ -63,8 +62,8 @@ export default () => {
                 $taskItem.innerHTML = `
                     <span class="tm__task-item-name">${task.title}</span>
                     <span class="tm__task-item-options">
-                        <button class="tm__btn tm__task-item-done">${task.completed ? 'Incomplete' : 'Complete'}</button>
-                        <button class="tm__btn tm__task-item-delete">Delete</button>
+                        <button aria-label="Update task status" class="tm__btn tm__task-item-done">${task.completed ? 'Incomplete' : 'Complete'}</button>
+                        <button aria-label="Delete task" class="tm__btn tm__task-item-delete">Delete</button>
                     <span>
                 `;
         
