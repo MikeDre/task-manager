@@ -1,7 +1,7 @@
 # Task Manager
 A simple task manager component that stores and retrieves tasks from localStorage.
 
-View online: https://tt-event-selector.vercel.app/
+View online: https://task-manager-fm.vercel.app/
 
 ## Requirements
 
