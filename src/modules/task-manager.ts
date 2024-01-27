@@ -44,6 +44,13 @@ export default () => {
             storeTaskList();
             loadTasks();
         }
+
+        function handleCompleteTask(taskIndex: number) {
+            tasks[taskIndex].completed = !tasks[taskIndex].completed;
+
+            storeTaskList();
+            loadTasks();
+        }
     
         function loadTasks() {
             $taskList.innerHTML = '';
@@ -56,11 +63,12 @@ export default () => {
                 $taskItem.innerHTML = `
                     <span>${task.title}</span>
                     <span class="tm__task-item-options">
-                        <button class="tm__btn tm__task-item-done">Done</button>
+                        <button class="tm__btn tm__task-item-done ${task.completed ? 'tm__task-item--completed' : ''}">Done</button>
                         <button class="tm__btn tm__task-item-delete">Delete</button>
                     <span>
                 `;
         
+                $taskItem.querySelector('.tm__task-item-done')?.addEventListener('click', () => handleCompleteTask(index));
                 $taskItem.querySelector('.tm__task-item-delete')?.addEventListener('click', () => handleRemoveTask(index));
 
                 $taskList.appendChild($taskItem);
@@ -69,10 +77,6 @@ export default () => {
         }
         
         $taskForm.addEventListener('submit', handleAddTask);
-
-        $newTaskToggle.addEventListener('click', () => {
-            $taskForm.classList.toggle('hidden');
-        });
 
         $newTaskToggle.addEventListener('click', () => {
             $taskForm.classList.toggle('hidden');
