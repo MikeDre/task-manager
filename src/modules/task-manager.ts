@@ -61,9 +61,9 @@ export default () => {
                 $taskItem.className = `tm__task-item ${task.completed ? 'tm__task-item--completed' : ''}`;
         
                 $taskItem.innerHTML = `
-                    <span>${task.title}</span>
+                    <span class="tm__task-item-name">${task.title}</span>
                     <span class="tm__task-item-options">
-                        <button class="tm__btn tm__task-item-done ${task.completed ? 'tm__task-item--completed' : ''}">Done</button>
+                        <button class="tm__btn tm__task-item-done">${task.completed ? 'Not yet done' : 'Done'}</button>
                         <button class="tm__btn tm__task-item-delete">Delete</button>
                     <span>
                 `;
