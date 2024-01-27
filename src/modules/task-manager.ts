@@ -63,7 +63,7 @@ export default () => {
                 $taskItem.innerHTML = `
                     <span class="tm__task-item-name">${task.title}</span>
                     <span class="tm__task-item-options">
-                        <button class="tm__btn tm__task-item-done">${task.completed ? 'Not yet done' : 'Done'}</button>
+                        <button class="tm__btn tm__task-item-done">${task.completed ? 'Incomplete' : 'Complete'}</button>
                         <button class="tm__btn tm__task-item-delete">Delete</button>
                     <span>
                 `;

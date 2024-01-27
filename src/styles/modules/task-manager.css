@@ -55,6 +55,7 @@
 }
 
 .tm__task-item-name {
+    text-align: left;
     font-size: 20px;
     font-weight: bold;
 }
