@@ -12,6 +12,24 @@ export default () => {
             completed: boolean;
         };
 
+        // Check if there are tasks stored in localStorage, if not set to empty array 
+        let tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
+
+        function storeTaskList() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        $taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submittedTask = $taskNewTitle.value;
+
+            if (submittedTask && submittedTask.length > 1) {
+                console.log('submitted task: ', submittedTask)
+            } else {
+                alert('Please enter a valid task (Min 2 characters)')
+            }
+        });
+
         // Toggle new task input
         $newTaskToggle.addEventListener('click', () => {
             $taskForm.classList.toggle('hidden');
